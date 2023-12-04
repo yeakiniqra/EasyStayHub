@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" href="logo.svg" type="image/x-icon">
+    <link href="/dist/output.css" rel="stylesheet" />
+    <link rel="stylesheet" href="style.css">
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"
+    ></script>
+    <title>EasyStayHub</title>
+  </head>
+  <body>
+    <!-- navbar -->
+    <div class="w-full mx-auto bg-white border-b 2xl:max-w-7xl">
+      <div
+        x-data="{ open: false }"
+        class="relative flex flex-col w-full p-5 mx-auto bg-white md:items-center md:justify-between md:flex-row md:px-6 lg:px-8"
+      >
+        <div
+          class="flex flex-row items-center justify-between lg:justify-start"
+        >
+          <a
+            class="text-lg tracking-tight text-black uppercase focus:outline-none focus:ring lg:text-2xl"
+            href="/"
+          >
+            <span class="lg:text-lg uppecase focus:ring-0"> EasyStayHub </span>
+          </a>
+          <button
+            @click="open = !open"
+            class="inline-flex items-center justify-center p-2 text-gray-400 hover:text-black focus:outline-none focus:text-black md:hidden"
+          >
+            <svg
+              class="w-6 h-6"
+              stroke="currentColor"
+              fill="none"
+              viewBox="0 0 24 24"
+            >
+              <path
+                :class="{'hidden': open, 'inline-flex': !open }"
+                class="inline-flex"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M4 6h16M4 12h16M4 18h16"
+              ></path>
+              <path
+                :class="{'hidden': !open, 'inline-flex': open }"
+                class="hidden"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M6 18L18 6M6 6l12 12"
+              ></path>
+            </svg>
+          </button>
+        </div>
+        <nav
+          :class="{'flex': open, 'hidden': !open}"
+          class="flex-col items-center flex-grow hidden md:pb-0 md:flex md:justify-end md:flex-row"
+        >
+          <a
+            class="px-2 py-2 text-sm text-gray-500 lg:px-6 md:px-3 hover:text-blue-600 lg:ml-auto"
+            href="#about"
+          >
+            About
+          </a>
+          <a
+            class="px-2 py-2 text-sm text-gray-500 lg:px-6 md:px-3 hover:text-blue-600"
+            href="reservation.html"
+          >
+            Reservation
+          </a>
+          <a
+            class="px-2 py-2 text-sm text-gray-500 lg:px-6 md:px-3 hover:text-blue-600"
+            href="pricing.html"
+          >
+           Pricing
+          </a>
+
+          <a
+            class="px-2 py-2 text-sm text-gray-500 lg:px-6 md:px-3 hover:text-blue-600"
+            href="#contact"
+          >
+          Contact
+          </a>
+
+          <div class="inline-flex items-center gap-2 list-none lg:ml-auto">
+            <a href="registration.html">
+            <button
+              class="block px-4 py-2 mt-2 text-sm text-gray-500 md:mt-0 hover:text-blue-600 focus:outline-none focus:shadow-outline"
+            >
+              Sign in
+            </button>
+        </a>
+
+        <a href="registration.html">
+            <button
+              class="inline-flex items-center justify-center px-4 py-2 text-sm font-semibold text-white bg-black rounded-full group focus:outline-none focus-visible:outline-2 focus-visible:outline-offset-2 hover:bg-gray-700 active:bg-gray-800 active:text-white focus-visible:outline-black"
+            >
+              Sign up
+            </button>
+        </a>
+          </div>
+        </nav>
+      </div>
+    </div>
+
+
+    <!-- hero section -->
+    
+    <section class="hero-section" >
+
+        <div class="relative bg-cover bg-center bg-no-repeat h-screen" style="background-image: url('https://shorturl.at/ayIM9');">
+            <div class="absolute inset-0 bg-black opacity-50"></div>
+            <div class="flex items-center justify-center absolute inset-0">
+              <div class="text-center text-white">
+                <p class="text-5xl font-medium tracking-tighter">
+                  Seamless Stays, Effortless Reservations.
+                </p>
+                <p class="max-w-xl mx-auto mt-4 text-lg tracking-tight text-white">
+                  Welcome to EasyStayHub - Your Gateway to Effortless Hotel Reservations!
+                </p>
+                <div class="flex flex-col items-center justify-center max-w-xl gap-3 mx-auto mt-10 lg:flex-row">
+                  <a href="reservation.html" class="items-center justify-center w-full px-6 py-2.5 text-center text-white duration-200 bg-black border-2 border-black rounded-full inline-flex hover:bg-transparent hover:border-white hover:text-white focus:outline-none lg:w-auto focus-visible:outline-black text-sm focus-visible:ring-black">
+                    Book Now
+                  </a>
+                  <a href="#_" class="inline-flex items-center justify-center text-sm font-semibold text-white duration-200 focus:outline-none focus-visible:outline-gray-600">
+                    Learn more &nbsp; →
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+      
+          <!-- <div class="flex justify-center gap-6 mt-6">
+            <a class="p-1 -m-1 group" aria-label="Follow on Twitter" href="#_">
+              <ion-icon class="w-6 h-6 transition fill-black hover:text-blue-500 md hydrated" name="logo-twitter" role="img" aria-label="logo twitter"></ion-icon>
+            </a><a class="p-1 -m-1 group" aria-label="Follow on Instagram" href="#_">
+              <ion-icon class="w-6 h-6 transition fill-black hover:text-blue-500 md hydrated" name="logo-instagram" role="img" aria-label="logo instagram"></ion-icon></a><a class="p-1 -m-1 group" aria-label="Follow on GitHub" href="#_">
+                <ion-icon class="w-6 h-6 transition fill-black hover:text-blue-500 md hydrated" name="logo-github" role="img" aria-label="logo github"></ion-icon></a><a class="p-1 -m-1 group" aria-label="Follow on LinkedIn" href="#_">
+                  <ion-icon class="w-6 h-6 transition fill-black hover:text-blue-500 md hydrated" name="logo-linkedin" role="img" aria-label="logo linkedin"></ion-icon>
+                </a>
+          </div> -->
+        </div>
+      </section>
+    
+      <!-- about section -->
+
+      <section class="about-section" id="about">
+        <div class="container mx-auto">
+          <div class="flex flex-col items-center justify-center gap-6 py-12 md:flex-row">
+            <div class="w-full md:w-1/2">
+              <img class="object-cover w-full h-64 rounded-lg" src="https://shorturl.at/hCLVX" alt="about">
+            </div>
+            <div class="w-full md:w-1/2">
+              <h2 class="text-3xl font-semibold text-gray-800 text-center">About Us</h2>
+              <p class="mt-4 mr-5 ml-4 text-gray-600">EasyStayHub is a hotel reservation website that allows users to book hotel rooms online. We provide hotel rooms for business and leisure travelers at the best prices. Browse our 2,563,380 accommodations in over 85,000 destinations.</p>
+              <div class="flex items-center justify-center gap-4 mt-8">
+                <a href="reservation.html" class="px-6 py-2 text-sm font-medium text-center text-white duration-200 bg-black border-2 border-black rounded-full inline-flex hover:bg-transparent hover:border-black hover:text-black focus:outline-none lg:w-auto focus-visible:outline-black">
+                  Read More
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!--our team section -->
+      <section class="team-section">
+        <div class="container mx-auto">
+            <h2 class="text-3xl font-semibold text-gray-800 text-center">Our Team</h2>
+            <p class="mt-4 text-gray-600">We are a team of 5 students from the University of Asia Pacific. We are currently pursuing our Masters in Computer Science. We are passionate about building web applications and we are always looking for new opportunities to learn and grow.</p>
+            <div class="flex flex-wrap items-center justify-center gap-6 py-6">
+                <div class="team-member img">
+                    <img class="object-cover w-24 h-24 rounded-full" src="images/utshaw.jpg" alt="Member 1">
+                </div>
+                <div class="team-member img">
+                    <img class="object-cover w-24 h-24 rounded-full" src="images/jyoti.jpg" alt="Member 2">
+                </div>
+                <div class="team-member img">
+                    <img class="object-cover w-24 h-24 rounded-full" src="images/nayeem.jpg" alt="Member 3">
+                </div>
+                <div class="team-member img">
+                    <img class="object-cover w-24 h-24 rounded-full" src="images/maruf.jpg" alt="Member 4">
+                </div>
+                <div class="team-member img">
+                    <img class="object-cover w-24 h-24 rounded-full" src="images/about-img.webp" alt="Member 5">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- feature section -->
+
+    <!-- Contact and Support Section -->
+<section class="flex flex-wrap justify-between mx-10 my-10" id="contact">
+  <!-- Contact Form -->
+  <div class="w-full md:w-1/2 p-5">
+      <h2 class="text-2xl font-bold mb-5 text-center">Contact Us</h2>
+      <form>
+          <input class="w-full p-2 mb-6 rounded border border-gray-300" type="text" placeholder="Name" required>
+          <input class="w-full p-2 mb-6 rounded border border-gray-300" type="email" placeholder="Email" required>
+          <textarea class="w-full p-2 mb-6 rounded border border-gray-300" placeholder="Message" required></textarea>
+          <button class="w-full p-2 bg-blue-500 text-white rounded">Submit</button>
+      </form>
+  </div>
+
+  <!-- Support Component -->
+  <div class="w-full md:w-1/2 p-5">
+      <h2 class="text-2xl font-bold mb-5">Support</h2>
+      <p>For any issues, please contact our support team. We are available 24/7 to assist you.</p>
+      <p class="mt-5"><strong>Email:</strong> yeakiniqra.connect@gmail.com</p>
+      <p class="mt-5"><strong>Phone:</strong> +1 234 567 890</p>
+      <p class="mt-5"><strong>Location:</strong>Green Road,Dhaka</p>
+  </div>
+</section>
+
+ 
+           
+<!-- Footer Section -->
+<footer class="bg-gray-800 text-white py-6 px-5">
+
+      <!-- Social Media Links -->
+      <div class="w-1/5 mr-10">
+          <h3 class="text-xl font-bold mb-2 mt-4 text-center">Follow Us</h3>
+          <div class="flex justify-center gap-6 mt-6">
+            <a class="p-1 -m-1 group" aria-label="Follow on Twitter" href="#_">
+              <ion-icon class="w-6 h-6 transition fill-white hover:text-blue-500 md hydrated" name="logo-twitter" role="img" aria-label="logo twitter"></ion-icon>
+            </a><a class="p-1 -m-1 group" aria-label="Follow on Instagram" href="#_">
+              <ion-icon class="w-6 h-6 transition fill-white hover:text-blue-500 md hydrated" name="logo-instagram" role="img" aria-label="logo instagram"></ion-icon></a><a class="p-1 -m-1 group" aria-label="Follow on GitHub" href="#_">
+                <ion-icon class="w-6 h-6 transition fill-white hover:text-blue-500 md hydrated" name="logo-github" role="img" aria-label="logo github"></ion-icon></a><a class="p-1 -m-1 group" aria-label="Follow on LinkedIn" href="#_">
+                  <ion-icon class="w-6 h-6 transition fill-white hover:text-blue-500 md hydrated" name="logo-linkedin" role="img" aria-label="logo linkedin"></ion-icon>
+                </a>
+          </div>
+      </div>
+  </div>
+  <p class="text-center mt-10">Developed by &copy;Yeakin Iqra. All rights reserved.</p>
+</footer>
+           
+
+      <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+  </body>
+</html>

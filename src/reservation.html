@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="/dist/output.css" rel="stylesheet" />
+    <link rel="stylesheet" href="style.css">
+    <title>Reservation</title>
+</head>
+<body>
+    <h1 class="text-4xl font-bold mb-6 text-center mt-10">Reservation</h1>
+
+    <section class="reservation-section relative bg-gray-600 p-8">
+        <!-- Background Image with Blur -->
+        <div class="absolute inset-0 bg-cover bg-center" style="background-image: url('https://shorturl.at/asOW2'); filter: opacity(10%);"></div>
+      
+         <!-- Content -->
+         <div class="relative z-10 p-8 text-white">
+            <h2 class="text-3xl font-bold mb-6 text-center">Room Details</h2>
+            <div class="mb-4">
+              <label for="room-type" class="block font-medium text-center text-2xl mb-3">Room Type:</label>
+              <form class="max-w-sm mx-auto">
+                <select id="room-type" onchange="updatePriceAndAvailability()" class="bg-gray-50 border border-gray-300 text-gray-900 text-lg rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-4 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 ">
+                  <option value="standard">Standard</option>
+                  <option value="deluxe">Deluxe</option>
+                  <option value="premium">Premium</option>
+                  <option value="platinum">Platinum</option>
+                </select>
+              </form>
+            </div>
+            
+            <form action="booking.html" method="get">
+            <div class="mb-4">
+              <label for="check-in" class="block  font-medium text-2xl">Check-In Date:</label>
+              <input type="date" id="check-in" name="check-in" class="bg-gray-50 border border-gray-300 text-gray-900 text-lg rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+            </div>
+            
+            <div class="mb-4">
+              <label for="check-out" class="block font-medium text-2xl">Check-Out Date:</label>
+              <input type="date" id="check-out" name="check-out" class="bg-gray-50 border border-gray-300 text-gray-900 text-lg rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+            </div>
+            
+            <button onclick="calculateTotalPrice()" class="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-700 focus:outline-none focus:ring focus:border-blue-300"> Check-in</button>
+            <div class="mb-4">
+              <label for="price-per-night" class="block font-medium mt-4 text-2xl">Total Price:</label>
+              <input type="text" id="price-per-night" name="price-per-night" class=" text-gray-900 text-lg rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 mt-5" readonly>
+            </div>
+
+            <div class="mb-6">
+              <label for="room-availability" class="block font-medium text-2xl">Room Availability:</label>
+              <input type="text" id="room-availability" name="room-availability" class="bg-gray-50 border border-gray-300 text-gray-900 text-lg rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" readonly>
+            </div>
+
+            <!-- Book Now & Exit Buttons -->
+           <div class="flex justify-between mt-6">
+            <button type="submit" class="book-now-button">Book Now</button>
+
+            <a href="index.html" class="exit-button">Exit</a>
+          </div>
+        </form>
+
+            <script>
+            
+
+              function updatePriceAndAvailability() {
+                // Your existing logic to update price and availability based on room type
+              }
+            
+              function calculateTotalPrice() {
+                // Get the selected room type
+                var roomType = document.getElementById('room-type').value;
+            
+                // Get the check-in and check-out dates
+                var checkInDate = document.getElementById('check-in').value;
+                var checkOutDate = document.getElementById('check-out').value;
+            
+                // Perform your price calculation logic based on room type and dates
+                // For simplicity, let's assume a fixed price for each room type
+                var pricePerNight;
+                switch (roomType) {
+                  case 'standard':
+                    pricePerNight = 100;
+                    break;
+                  case 'deluxe':
+                    pricePerNight = 150;
+                    break;
+                  case 'premium':
+                    pricePerNight = 200;
+                    break;
+                  case 'platinum':
+                    pricePerNight = 250;
+                    break;
+                  default:
+                    pricePerNight = 0;
+                }
+            
+                // Calculate the total price based on the number of nights
+                var numberOfNights = calculateNumberOfNights(checkInDate, checkOutDate);
+                var totalPrice = pricePerNight * numberOfNights;
+
+                
+            
+                // Update the price input field
+                document.getElementById('price-per-night').value = '$' + totalPrice.toFixed(2);
+            
+                // Update the availability field based on your logic
+                // For simplicity, let's assume all rooms are available
+                document.getElementById('room-availability').value = 'Available';
+                 
+                
+              }
+            
+              function calculateNumberOfNights(checkInDate, checkOutDate) {
+                // Your logic to calculate the number of nights between check-in and check-out dates
+                // This can be done using JavaScript Date objects or a library like Moment.js
+                // For simplicity, let's assume a basic calculation here
+                var checkIn = new Date(checkInDate);
+                var checkOut = new Date(checkOutDate);
+                var timeDifference = checkOut - checkIn;
+                var numberOfNights = timeDifference / (1000 * 3600 * 24);
+                return numberOfNights;
+              }
+            </script>
+            
+      </section>
+
+      
+           
+          
+      
+</body>
+</html>

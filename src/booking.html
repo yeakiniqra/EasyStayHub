@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="/dist/output.css" rel="stylesheet" />
+    <link rel="stylesheet" href="booking.css">
+      <!-- Font Awesome -->
+      <script
+      src="https://kit.fontawesome.com/bb515311f9.js"
+      crossorigin="anonymous"
+    ></script>
+    <title>Booking & Payments</title>
+</head>
+<body>
+    <h1 class="checkout-heading">Checkout & Billing</h1>
+  
+    <section class="section_form">
+        <form id="consultation-form" class="feed-form" action="#">
+          <input required="" placeholder="Name" type="text">
+          <input required="" placeholder="Address" type="text">
+          <input name="phone" required="" placeholder="Phone number">
+          <input name="email" required="" placeholder="E-mail" type="email">
+        </form>
+      </section>
+
+    <div class="payment-form">
+        <div>
+            <label for="payment-method">Payment Method:</label>
+            <select id="payment-method">
+                <option value="credit-card">Credit Card</option>
+                <option value="debit-card">Debit Card</option>
+                <option value="paypal">PayPal</option>
+            </select>
+        </div>
+    
+        <div>
+            <label for="promo-code">Promo Code:</label>
+            <input type="text" id="promo-code" placeholder="Enter Promo Code">
+        </div>
+    </div>
+   
+
+   <!-- Display the received data -->
+ <div class="receipt-summary">
+    <p>Check-In Date: <span id="check-in-display"></span></p>
+    <p>Check-Out Date: <span id="check-out-display"></span></p>
+    <p>Total Price: <span id="total-price-display"></span></p>
+    <p>Room Availability: <span id="room-availability-display"></span></p>
+</div> 
+
+<div class="card checkout">
+    <div class="footer">
+        <a href="complete.html" class="checkout-btn" >Check Out</a>
+    </div>
+  </div>
+  <div class="card checkout">
+    <div class="footer">
+        <a href="index.html" class="checkout-btn" >Back to Home</a>
+    </div>
+  </div>
+
+
+   <script>
+    document.addEventListener("DOMContentLoaded", function() {
+        // Get URL parameters
+        var params = new URLSearchParams(window.location.search);
+        var checkIn = params.get('check-in');
+        var checkOut = params.get('check-out');
+        var totalPrice = params.get('price-per-night');
+        var roomAvailability = params.get('room-availability');
+
+        // Display the received data
+        document.getElementById('check-in-display').textContent = checkIn;
+        document.getElementById('check-out-display').textContent = checkOut;
+        document.getElementById('total-price-display').textContent = totalPrice;
+        document.getElementById('room-availability-display').textContent = roomAvailability;
+    });
+</script>
+
+
+    
+</body>
+</html>
